@@ -1,0 +1,41 @@
+﻿<html ng-app="friendApp">
+<head>
+    <title>My Friends</title>
+
+    <script src="~/App/Js/angular.js"></script>
+    <script src="~/App/App.Model.js"></script>
+    <script src="~/App/App.Service.js"></script>
+
+</head>
+<body ng-controller="friendController">
+
+    <h1>My Friends</h1>
+
+    <br />
+    <br />
+
+    <h3>Add new  Friends</h3>
+    <form name="form">
+        <input type="text" ng-model="data.Name" placeholder="Name" required />
+        <input type="text" ng-model="data.LastName" placeholder="LastName" required /><br /><br />
+        <button ng-click="addFriend(data)" ng-disabled="!form.$valid">Add new friend</button>
+    </form>
+
+    <br />
+    <br />
+
+    <div ng-if="friends.length > 0">
+        <h3>Friends List </h3>
+        <ol>
+            <li ng-repeat="friend in friends">
+                <input type="text" ng-model="friend.Name" required />
+                <input type="text" ng-model="friend.LastName" required />
+                <button ng-click="updateFriend(friend)">Update</button>
+                <button ng-click="removeFriend(friend.Id)">Remove</button>
+            </li>
+        </ol>
+    </div>
+
+
+</body>
+</html>
